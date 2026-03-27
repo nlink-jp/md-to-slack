@@ -3,7 +3,7 @@
 Markdown を [Slack Block Kit](https://api.slack.com/block-kit) JSON に変換するフィルターツール。
 
 標準入力から Markdown を読み込み、`{"blocks": [...]}` 形式の JSON を標準出力に書き出します。
-Slack API や [slackcat](https://github.com/bcicen/slackcat) などのツールと組み合わせて使用できます。
+[scli](https://github.com/nlink-jp/scli) と組み合わせてターミナルから Slack に投稿するのに最適です。
 
 ## 機能
 
@@ -34,14 +34,10 @@ md-to-slack < README.md
 echo "# こんにちは **世界**" | md-to-slack
 ```
 
-### Slack への送信例
+### scli と組み合わせて Slack に投稿
 
 ```bash
-md-to-slack < message.md | curl -s \
-  -X POST https://slack.com/api/chat.postMessage \
-  -H "Authorization: Bearer $SLACK_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d @- -d '{"channel":"#general"}'
+md-to-slack < message.md | scli post --channel general --blocks -
 ```
 
 ### フラグ

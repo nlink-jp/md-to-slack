@@ -3,7 +3,7 @@
 Convert Markdown to [Slack Block Kit](https://api.slack.com/block-kit) JSON.
 
 Reads Markdown from stdin and writes a `{"blocks": [...]}` JSON payload to stdout,
-suitable for use with the Slack API or tools like [slackcat](https://github.com/bcicen/slackcat).
+designed to pair with [scli](https://github.com/nlink-jp/scli) for posting to Slack from the terminal.
 
 ## Features
 
@@ -34,14 +34,10 @@ md-to-slack < README.md
 echo "# Hello **world**" | md-to-slack
 ```
 
-### Send to Slack
+### Post to Slack with scli
 
 ```bash
-md-to-slack < message.md | curl -s \
-  -X POST https://slack.com/api/chat.postMessage \
-  -H "Authorization: Bearer $SLACK_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d @- -d '{"channel":"#general"}'
+md-to-slack < message.md | scli post --channel general --blocks -
 ```
 
 ### Flags
