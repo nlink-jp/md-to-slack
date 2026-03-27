@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-03-28
+
+### Changed
+
+- Updated README example to use `scli` instead of `slackcat` for Slack posting.
+
+### Internal
+
+- Added macOS-specific entries to `.gitignore`.
+
 ## [0.1.0] - 2026-03-27
 
 ### Added
