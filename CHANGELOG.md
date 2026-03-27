@@ -13,6 +13,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - Updated README example to use `scli` instead of `slackcat` for Slack posting.
 
+### Fixed
+
+- Fixed `.gitignore` pattern `md-to-slack` that was inadvertently excluding the
+  `cmd/md-to-slack/` source directory; changed to `/md-to-slack` to match only the
+  root-level compiled binary.
+- Added missing `cmd/md-to-slack/main.go` (CLI entry point) to the repository.
+
 ### Internal
 
 - Added macOS-specific entries to `.gitignore`.
