@@ -5,8 +5,8 @@ CMD     := ./cmd/md-to-slack
 
 .PHONY: build test vet lint check build-all clean
 
-build:
-	go build $(LDFLAGS) -o $(BINARY) $(CMD)
+build: _dist
+	go build $(LDFLAGS) -o dist/$(BINARY) $(CMD)
 
 test:
 	go test ./...
@@ -19,13 +19,15 @@ lint:
 
 check: vet lint test build
 
-build-all:
+build-all: _dist
 	GOOS=linux   GOARCH=amd64  go build $(LDFLAGS) -o dist/$(BINARY)-linux-amd64   $(CMD)
 	GOOS=linux   GOARCH=arm64  go build $(LDFLAGS) -o dist/$(BINARY)-linux-arm64   $(CMD)
 	GOOS=darwin  GOARCH=amd64  go build $(LDFLAGS) -o dist/$(BINARY)-darwin-amd64  $(CMD)
 	GOOS=darwin  GOARCH=arm64  go build $(LDFLAGS) -o dist/$(BINARY)-darwin-arm64  $(CMD)
 	GOOS=windows GOARCH=amd64  go build $(LDFLAGS) -o dist/$(BINARY)-windows-amd64.exe $(CMD)
 
+_dist:
+	mkdir -p dist
+
 clean:
-	rm -f $(BINARY)
 	rm -rf dist/
