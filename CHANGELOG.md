@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-07-12
+
+### Added
+
+- **`LICENSE` file (MIT).** The repository previously had no license file;
+  it is now MIT-licensed and the license is bundled in every release archive.
+
+### Removed
+
+- **darwin/amd64 (Intel) pre-built binary.** macOS releases now ship
+  **arm64 only**, per the org-wide policy (darwin is Apple-Silicon only; no
+  universal binaries). Intel Mac users can build from source.
+
+### Changed
+
+- **Linux release archives are now `.tar.gz`** (darwin/windows remain `.zip`),
+  per `nlink-jp/.github` CONVENTIONS.md §Release Archive Standard. Archives
+  now bundle `README.md` + `LICENSE` alongside the canonical binary.
+- **darwin code-signature identifier** is now the canonical `md-to-slack`
+  (was `md-to-slack-darwin-arm64`), set via `codesign -i` so it stays stable
+  after the archived binary is renamed to its canonical name.
+
+No change to the binary's behaviour — a packaging / build-config release.
+
 ## [0.1.2] - 2026-05-22
 
 ### Added
