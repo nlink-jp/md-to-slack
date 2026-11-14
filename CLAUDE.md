@@ -28,6 +28,7 @@ internal/converter/
 ```
 make test        # go test ./...
 make check       # vet + lint + test + build
+make vuln        # govulncheck; `make package` runs it first and stops on a finding
 ```
 
 ## Shared conventions
